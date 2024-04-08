@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pizza Menu</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    .container {
+      padding: 50px;
+      background-image: url('https://cdn.pixabay.com/photo/2020/03/25/21/05/pizza-4968645_640.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-color: rgba(255, 255, 255, 0.8);
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    }
+    
+    .card {
+      border: none;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      border-radius: 10px;
+    }
+    .card-body {
+      text-align: center;
+    }
+    
+    .card-title {
+      color: #333;
+      font-size: 24px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    
+    .list-group-item {
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 15px;
+      background-color: rgba(255, 255, 255, 0.95); 
+    }
+    
+    .btn {
+      padding: 8px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    
+    .btn-success {
+      background-color: #28a745;
+      border-color: #28a745;
+    }
+    
+    .btn-success:hover {
+      background-color: #218838;
+      border-color: #1e7e34;
+    }
+    
+    .btn-primary {
+      background-color: #007bff;
+      border-color: #007bff;
+    }
+    
+    .btn-primary:hover {
+      background-color: #0056b3;
+      border-color: #0056b3;
+    }
+    
+    .btn-danger {
+      background-color: #dc3545;
+      border-color: #dc3545;
+    }
+    
+    .btn-danger:hover {
+      background-color: #c82333;
+      border-color: #bd2130;
+    }
+    .back-button {
+      padding: 8px 16px;
+      font-size: 16px;
+      cursor: pointer;
+      color: #fff;
+      background-color: #007bff;
+      border-color: #007bff;
+      border-top-color: rgb(0, 123, 255);
+      border-right-color: rgb(0, 123, 255);
+      border-bottom-color: rgb(0, 123, 255);
+      border-left-color: rgb(0, 123, 255);
+      text-align: middle;
+      margin-bottom: 6px;
+      border-radius: 4px;
+      height: 70%;
+      transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    }
+    .back-button:hover {
+      background-color: #0056b3;
+      border-color: #0056b3;
+    }
+    #totalCost {
+      font-size: 24px;
+      font-weight: bold;
+    }
+    
+    #pizzaItemsList li {
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card mt-5">
+          <div class="card-body">
+            <h1 class="card-title">Pizza Menu</h1>
+            <ul id="pizzaList" class="list-group">
+              <li class="list-group-item">
+                <h5>Margherita Pizza</h5>
+                <div>
+                  <select id="margheritaSizePizza" class="form-control form-control-sm">
+                    <option value="small">Small - ₹99</option>
+                    <option value="medium">Medium - ₹199</option>
+                    <option value="large">Large - ₹399</option>
+                  </select>
+                  <input id="margheritaQuantity" type="number" min="0" value="0" class="form-control form-control-sm mt-2" placeholder="Quantity">
+                  <button class="addItem btn btn-success btn-sm mt-2" data-name="Margherita_Pizza">Add</button>
+                </div>
+              </li>
+              <li class="list-group-item">
+                <h5>Cheese n Corn Pizza</h5>
+                <div>
+                  <select id="cheeseNCornPizzaSize" class="form-control form-control-sm">
+                    <option value="small">Small - ₹169</option>
+                    <option value="medium">Medium - ₹309</option>
+                    <option value="large">Large - ₹499</option>
+                  </select>
+                  <input id="cheeseQuantity" type="number" min="0" value="0" class="form-control form-control-sm mt-2" placeholder="Quantity">
+                  <button class="addItem btn btn-success btn-sm mt-2" data-name="Cheese_n_Corn_Pizza">Add</button>
+                </div>
+              </li>
+              <li class="list-group-item">
+                <h5>Cheese n Tomato Pizza</h5>
+                <div>
+                  <select id="cheeseNTomatoPizzaSize" class="form-control form-control-sm">
+                    <option value="small">Small - ₹169</option>
+                    <option value="medium">Medium - ₹309</option>
+                    <option value="large">Large - ₹499</option>
+                  </select>
+                  <input id="cheesetomatoQuantity" type="number" min="0" value="0" class="form-control form-control-sm mt-2" placeholder="Quantity">
+                  <button class="addItem btn btn-success btn-sm mt-2" data-name="Cheese_n_Tomato_Pizza">Add</button>
+                </div>
+              </li>
+              <li class="list-group-item">
+                <h5>Double Cheese Margerita Pizza</h5>
+                <div>
+                  <select id="doubleCheeseMargeritaPizzaSize" class="form-control form-control-sm">
+                    <option value="small">Small - ₹189</option>
+                    <option value="medium">Medium - ₹339</option>
+                    <option value="large">Large - ₹539</option>
+                  </select>
+                  <input id="doublecheesemargheritaQuantity" type="number" min="0" value="0" class="form-control form-control-sm mt-2" placeholder="Quantity">
+                  <button class="addItem btn btn-success btn-sm mt-2" data-name="Double_Cheese_Margerita_Pizza">Add</button>
+                </div>
+              </li>
+              <li class="list-group-item">
+                <h5>Fresh Veggle Pizza</h5>
+                <div>
+                  <select id="freshVegglePizzaSize" class="form-control form-control-sm">
+                    <option value="small">Small - ₹189</option>
+                    <option value="medium">Medium - ₹339</option>
+                    <option value="large">Large - ₹539</option>
+                  </select>
+                  <input id="freshveggelepizzaQuantity" type="number" min="0" value="0" class="form-control form-control-sm mt-2" placeholder="Quantity">
+                  <button class="addItem btn btn-success btn-sm mt-2" data-name="Fresh_Veggle_Pizza">Add</button>
+                </div>
+              </li>
+              <li class="list-group-item">
+                <h5>Peppy Paneer Pizza</h5>
+                <div>
+                  <select id="peppyPaneerPizzaSize" class="form-control form-control-sm">
+                    <option value="small">Small - ₹229</option>
+                    <option value="medium">Medium - ₹399</option>
+                    <option value="large">Large - ₹599</option>
+                  </select>
+                  <input id="peppypaneerQuantity" type="number" min="0" value="0" class="form-control form-control-sm mt-2" placeholder="Quantity">
+                  <button class="addItem btn btn-success btn-sm mt-2" data-name="Peppy_Paneer_Pizza">Add</button>
+                </div>
+              </li>
+              <li class="list-group-item">
+                <h5>Cheese Dominator Pizza</h5>
+                <div>
+                  <select id="cheeseDominatorPizzaSize" class="form-control form-control-sm">
+                    <option value="small">Small - ₹319</option>
+                    <option value="medium">Medium - ₹579</option>
+                    <option value="large">Large - ₹839</option>
+                  </select>
+                  <input id="cheesedominatorQuantity" type="number" min="0" value="0" class="form-control form-control-sm mt-2" placeholder="Quantity">
+                  <button class="addItem btn btn-success btn-sm mt-2" data-name="Cheese_Dominator_Pizza">Add</button>
+                </div>
+              </li>
+              <li class="list-group-item">
+                <h5>Farm House Pizza</h5>
+                <div>
+                  <select id="farmHousePizzaSize" class="form-control form-control-sm">
+                    <option value="small">Small - ₹229</option>
+                    <option value="medium">Medium - ₹339</option>
+                    <option value="large">Large - ₹539</option>
+                  </select>
+                  <input id="farmhouseQuantity" type="number" min="0" value="0" class="form-control form-control-sm mt-2" placeholder="Quantity">
+                  <button class="addItem btn btn-success btn-sm mt-2" data-name="Farm_house_Pizza">Add</button>
+                </div>
+              </li>
+            
+
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card mt-5">
+          <div class="card-body">
+            <h3>Total Cost: ₹<span id="totalCost">0</span></h3>
+            <button id="placeOrder" class="btn btn-primary">Place Order</button>
+            <button id="placeOrder2" class="back-button" onClick="goToShoppingCart()">< Back</button>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>
+    const pizzaItems = [
+  { name: "Margherita", sizes: { small: 99, medium: 199, large: 399 } },
+  { name: "Cheese n Corn Pizza", sizes: { small: 169, medium: 309, large: 499 } },
+  { name: "Cheese n Tomato Pizza", sizes: { small: 169, medium: 309, large: 499 } },
+  { name: "Double Cheese Margerita Pizza", sizes: { small: 189, medium: 339, large: 539 } },
+  { name: "Fresh Veggle Pizza", sizes: { small: 189, medium: 339, large: 539 } },
+  { name: "Peppy Paneer Pizza", sizes: { small: 229, medium: 399, large: 599 } },
+  { name: "Cheese Dominator Pizza", sizes: { small: 319, medium: 579, large: 839 } },
+  { name: "Farm House Pizza", sizes: { small: 229, medium: 339, large: 539 } }
+];
+const pizzaItemsList = document.getElementById('pizzaList');
+const totalCostDisplay = document.getElementById('totalCost');
+let totalCost = 0;
+
+function addItemToCart(item) {
+  console.log("Adding item to cart:", item);
+  const removeButton = document.createElement('button');
+  removeButton.textContent = 'Remove';
+  removeButton.className = 'removeItem btn btn-danger btn-sm float-right';
+  removeButton.addEventListener('click', () => {
+    totalCost -= item.price;
+    totalCostDisplay.textContent = totalCost.toFixed(2);
+    removeButton.parentNode.remove();
+  });
+
+  const listItem = document.createElement('li');
+  listItem.textContent = `${item.name} - ₹${item.price}`;
+  listItem.className = 'list-group-item';
+  listItem.appendChild(removeButton);
+  pizzaItemsList.appendChild(listItem);
+}
+
+
+function removeItemFromLocalStorage(itemName) {
+  const addedItems = JSON.parse(localStorage.getItem('items')) || [];
+  const updatedItems = addedItems.filter(item => item.name !== itemName);
+  localStorage.setItem('items', JSON.stringify(updatedItems));
+}
+const addToCartButtons = document.querySelectorAll('.addItem');
+addToCartButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    const itemName = button.getAttribute('data-name'); // Get the data-name attribute
+    const sizeSelect = button.parentNode.querySelector('select');
+    const size = sizeSelect.value;
+    const item = pizzaItems.find(pizza => pizza.name === itemName);
+    if (item) { // Check if item is found
+      const itemPrice = item.sizes[size];
+      totalCost += itemPrice;
+      totalCostDisplay.textContent = totalCost.toFixed(2);
+      addItemToCart({ name: itemName, price: itemPrice });
+
+      const addedItems = JSON.parse(localStorage.getItem('items')) || [];
+      addedItems.push({ name: itemName, price: itemPrice });
+      localStorage.setItem('items', JSON.stringify(addedItems));
+    } else {
+      console.error('Item not found');
+    }
+  });
+});
+document.getElementById('pizzaList').addEventListener('click', (event) => {
+  if (event.target.classList.contains('removeItem')) {
+    const itemName = event.target.parentNode.firstChild.textContent.trim();
+    const itemPrice = parseFloat(event.target.parentNode.firstChild.textContent.trim().split('₹')[1]);
+    totalCost -= itemPrice;
+    totalCostDisplay.textContent = totalCost.toFixed(2);
+    event.target.parentNode.remove();
+    removeItemFromLocalStorage(itemName);
+  }
+});
+function goToShoppingCart() {
+  window.location.href = "template.html";
+}
+
+document.getElementById('placeOrder').addEventListener('click', () => {
+  if (totalCost === 0) {
+    alert('Select items');
+  } else {
+    alert('Order Placed');
+  }
+});
+  </script>
+</body>
+</html>

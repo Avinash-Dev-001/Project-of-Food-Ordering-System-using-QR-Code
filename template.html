@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Menu</title>
+        <link rel="stylesheet" href="styles4.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    </head>
+<body>
+    <div class="wrapper">
+        <div class="cart-button" onclick="toggleCart()">
+            <i class="fas fa-shopping-cart"></i>
+            <span class="cart-item-count">0</span>
+        </div>
+        <div class="cart">
+            <legend>Shopping Cart</legend><br><br>
+            <ul id="addedItemsList"></ul>
+            <p id="totalBill">Total bill: $0</p><br><br>
+            <button class="proceed" onclick="proceedToPayment()">Proceed to Payment</button>
+            <button class="clear" onclick="clearCart()">Clear Cart</button>
+        </div>
+        <div class="menu-container " padding-bottom="200px">
+
+            <div class="menu-item" style="height:auto">
+                <h2>01 Veg Dishes</h2><br>
+
+                <p>* Explore our delicious vegetarian options.</p>
+                <br>
+                <img class="veg-Slides" src="https://www.indianhealthyrecipes.com/wp-content/uploads/2022/03/naan-recipe-768x1152.jpg.webp" style="width:50%">
+                <img class="veg-Slides" src="https://curlytales.com/wp-content/uploads/2023/10/Add-a-subheading-2023-10-16T153726.691.jpg" style="width:50%">
+                <img class="veg-Slides" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/South_Indian_non-veg_Meals.jpg/800px-South_Indian_non-veg_Meals.jpg" style="width:50%">
+                <img class="veg-Slides" src="https://www.nehascookbook.com/wp-content/uploads/2022/09/Punjabi-thali-WS.jpg" style="width:50%">
+                <img class="veg-Slides" src="https://images.herzindagi.info/image/2023/Apr/bengali-veg-recipes.jpg" style="width:50%">
+
+                <button class="learn-more" onClick="myVeg()">LEARN MORE</button>
+            </div>
+
+            <div class="menu-item">
+                <h2>02 Non-Veg Dishes</h2><br>
+                <p>* Indulge in our mouthwatering non-vegetarian delicacies.</p><br>
+
+                <img class="nonveg-Slides" src="https://www.shutterstock.com/image-photo/madurai-india-nov-4-2020-600w-1852796557.jpg" style="width:50%">
+                <img class="nonveg-Slides" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-zOy8EScq8weLgZBSbpW_Ig7IYyTJTpHqiw&usqp=CAU" style="width:50%">
+                <img class="nonveg-Slides" src="https://www.shaadidukaan.com/vogue/wp-content/uploads/2020/01/Non-Vegetarian-Dishes.jpg" style="width:50%">
+                <img class="nonveg-Slides" src="https://qph.cf2.quoracdn.net/main-qimg-e5d69d34877ad728d338e1dae9f79f40-lq" style="width:50%">
+                <img class="nonveg-Slides" src="https://d4t7t8y8xqo0t.cloudfront.net/resized/750X436/eazytrendz%2F1610%2Ftrend20171011045215.jpg" style="width:50%">
+
+                <button class="learn-more" onClick="myNonveg()">LEARN MORE</button>
+    
+            </div>
+
+            <div class="menu-item ">
+                <h2>03 MilkShakes & IceCreams </h2><br>
+                <p>* Cool off with our refreshing milkshakes and creamy ice creams.</p><br>
+
+                <img class="mySlides" src="https://houseofnasheats.com/wp-content/uploads/2023/01/Oreo-Milkshake-Square-1.jpg" style="width:50%">
+                <img class="mySlides" src="https://www.yourhomebasedmom.com/wp-content/uploads/2021/08/CHOCOLATE-MILK-SHAKE-5520.jpg" style="width:50%">
+                <img class="mySlides" src="https://bakingmischief.com/wp-content/uploads/2022/03/coffee-milkshake-square.jpg" style="width:50%">
+
+                <button class="learn-more" onClick="myMilkshakes()">LEARN MORE</button>
+            </div>
+            <div class="menu-item">
+                <h2>04 Classic Menu</h2><br>
+                <p>* Experience the timeless flavors of our classic menu.</p><br>
+
+                <img class="classicSlides" src="https://photos.smugmug.com/Asia/India/i-Pf4hCQr/0/d3d38770/X2/indian-food-dosa-X2.jpg" style="width:50%">
+                <img class="classicSlides" src="https://www.vegrecipesofindia.com/wp-content/uploads/2021/06/idli-recipe-1.jpg" style="width:50%">
+                <img class="classicSlides" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfdDPewIZikQeQ92oMiuDah5CDRBPZd822pQ&usqp=CAU" style="width:50%">
+                <img class="classicSlides" src="https://stylesatlife.com/wp-content/uploads/2018/03/South-Indian-Food-Recipes.jpg" style="width:50%">
+                
+                <button class="learn-more" onClick="myClassic()">LEARN MORE</button>
+            </div>
+            <div class="menu-item">
+                <h2>05 Indian Snacks</h2><br>
+                <p>* Snack on our delectable Indian treats.</p><br>
+
+                <img class="snack-Slides" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSs9PhisfrVAPxi9EfePD9Kyi5UyWSVvxl0xg&usqp=CAU" style="width:50%">
+                <img class="snack-Slides" src="https://english.cdn.zeenews.com/sites/default/files/2023/05/24/1206707-south-indian-namkeen.png" style="width:50%">
+                <img class="snack-Slides" src="https://c.ndtvimg.com/2020-07/vnd3gbcg_murukku_625x300_31_July_20.jpg" style="width:50%">
+                <img class="snack-Slides" src="https://i.pinimg.com/736x/e2/73/57/e273577dbb39868e00cf5519cd86f4a7.jpg" style="width:50%">
+
+                <button class="learn-more" onClick="mySnacks()">LEARN MORE</button>
+            </div>
+            <div class="menu-item">
+                <h2>06 Pizza</h2><br>
+                <p>* Satisfy your pizza cravings with our mouthwatering pies.</p><br>
+
+                <img class="pizza-Slides" src="https://thechutneylife.com/wp-content/uploads/2023/06/paneerpizza-7.jpg" style="width:50%">
+                <img class="pizza-Slides" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3l17ESsbTzvjSRCwtXCCz7BMqRP8HBXzi8T3LkhnP_Q&s" style="width:50%">
+                <img class="pizza-Slides" src="https://www.foodandwine.com/thmb/Wd4lBRZz3X_8qBr69UOu2m7I2iw=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/classic-cheese-pizza-FT-RECIPE0422-31a2c938fc2546c9a07b7011658cfd05.jpg" style="width:50%">
+                <img class="pizza-Slides" src="https://img.buzzfeed.com/thumbnailer-prod-us-east-1/video-api/assets/216054.jpg?resize=1200:*" style="width:50%">
+
+                <button class="learn-more" onClick="myPizza()">LEARN MORE</button>
+            </div>
+        </div>
+
+    </div>
+    <script>
+        function myVeg(){
+            window.location.href="http://192.168.45.194:5500/ex1.html";
+        }
+        function myNonveg(){
+            window.location.href="http://192.168.45.194:5500/Nonvegitems.html";
+        }
+        function myMilkshakes(){
+            window.location.href="http://192.168.45.194:5500/milkshakes.html";
+        }
+        function myClassic(){
+            window.location.href="http://192.168.45.194:5500/classic.html";
+        }
+        function mySnacks(){
+            window.location.href="http://192.168.45.194:5500/Indian.html";
+        }
+        function myPizza(){
+            window.location.href="http://192.168.45.194:5500/pizaprtocol.html";
+        }
+
+        var myIndex1 = 0;
+        carousel1();
+    
+        function carousel1() {
+            var i;
+            var slides1 = document.querySelectorAll(".mySlides");
+            for (i = 0; i < slides1.length; i++) {
+                slides1[i].style.display = "none";  
+            }
+            myIndex1++;
+            if (myIndex1 > slides1.length) {myIndex1 = 1}    
+            slides1[myIndex1-1].style.display = "block";  
+            setTimeout(carousel1, 2500);
+        }
+    
+        var myIndex2 = 0;
+        carousel2();
+    
+        function carousel2() {
+            var i;
+            var slides2 = document.querySelectorAll(".nonveg-Slides");
+            for (i = 0; i < slides2.length; i++) {
+                slides2[i].style.display = "none";  
+            }
+            myIndex2++;
+            if (myIndex2 > slides2.length) {myIndex2 = 1}    
+            slides2[myIndex2-1].style.display = "block";  
+            setTimeout(carousel2, 2500);
+        }
+        var myIndex3 = 0;
+        carousel3();
+    
+        function carousel3() {
+            var i;
+            var slides3 = document.querySelectorAll(".veg-Slides");
+            for (i = 0; i < slides3.length; i++) {
+                slides3[i].style.display = "none";  
+            }
+            myIndex3++;
+            if (myIndex3 > slides3.length) {myIndex3 = 1}    
+            slides3[myIndex3-1].style.display = "block";  
+            setTimeout(carousel3, 2500);
+        }
+        var myIndex4 = 0;
+        carousel4();
+    
+        function carousel4() {
+            var i;
+            var slides4 = document.querySelectorAll(".classicSlides");
+            for (i = 0; i < slides4.length; i++) {
+                slides4[i].style.display = "none";  
+            }
+            myIndex4++;
+            if (myIndex4 > slides4.length) {myIndex4 = 1}    
+            slides4[myIndex4-1].style.display = "block";  
+            setTimeout(carousel4, 2500);
+        }
+        var myIndex5 = 0;
+        carousel5();
+    
+        function carousel5() {
+            var i;
+            var slides5 = document.querySelectorAll(".snack-Slides");
+            for (i = 0; i < slides5.length; i++) {
+                slides5[i].style.display = "none";  
+            }
+            myIndex5++;
+            if (myIndex5 > slides5.length) {myIndex5 = 1}    
+            slides5[myIndex5-1].style.display = "block";  
+            setTimeout(carousel5, 2500);
+        }
+        var myIndex6 = 0;
+        carousel6();
+    
+        function carousel6() {
+            var i;
+            var slides6 = document.querySelectorAll(".pizza-Slides");
+            for (i = 0; i < slides6.length; i++) {
+                slides6[i].style.display = "none";  
+            }
+            myIndex6++;
+            if (myIndex6 > slides6.length) {myIndex6 = 1}    
+            slides6[myIndex6-1].style.display = "block";  
+            setTimeout(carousel6, 2500);
+        }
+        
+        
+
+    </script>
+    <script src="script.js"></script>
+    
+
+</body>
+</html>

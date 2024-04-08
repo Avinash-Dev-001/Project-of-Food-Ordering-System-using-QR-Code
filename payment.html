@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Order Payment Form</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.3/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+    <div class="w-full max-w-md mx-auto">
+        <h2 class="text-center text-2xl font-bold mb-6">Food Order Payment Form</h2>
+
+        <form id="paymentForm">
+            <!-- Add amount input field -->
+            <div class="mb-4">
+                <label for="amount" class="block text-gray-700 text-sm font-bold mb-2">Amount:</label>
+                <input type="text" id="amount" name="amount"
+                    class="form-input border rounded py-2 px-3 focus:outline-none focus:ring focus:ring-green-500 focus:border-green-500"
+                    required>
+            </div>
+
+            <div class="mb-4">
+                <label for="name" class="block text-gray-700 text-sm font-bold mb-2">Name :</label>
+                <input type="text" id="name" name="name"
+                    class="form-input border rounded py-2 px-3 focus:outline-none focus:ring focus:ring-green-500 focus:border-green-500"
+                    required>
+                <p id="nameError" class="text-red-500 text-xs italic mt-1"></p>
+            </div>
+            <div class="mb-4">
+                <label for="phoneNumber" class="block text-gray-700 text-sm font-bold mb-2">Phone Number:</label>
+                <input type="text" id="phoneNumber" name="phoneNumber"
+                    class="form-input border rounded py-2 px-3 focus:outline-none focus:ring focus:ring-green-500 focus:border-green-500"
+                    required>
+                <p id="phoneNumberError" class="text-red-500 text-xs italic mt-1"></p>
+            </div>
+
+            <div class="mb-4">
+                <label for="homeAddress" class="block text-gray-700 text-sm font-bold mb-2">Home Address:</label>
+                <textarea id="homeAddress" name="homeAddress"
+                    class="form-input border rounded py-2 px-3 focus:outline-none focus:ring focus:ring-green-500 focus:border-green-500"
+                    required></textarea>
+                <p id="homeAddressError" class="text-red-500 text-xs italic mt-1"></p>
+            </div>
+
+            <div class="mb-4">
+                <label for="pincode" class="block text-gray-700 text-sm font-bold mb-2">Pincode:</label>
+                <input type="text" id="pincode" name="pincode"
+                    class="form-input border rounded py-2 px-3 focus:outline-none focus:ring focus:ring-green-500 focus:border-green-500"
+                    required>
+                <p id="pincodeError" class="text-red-500 text-xs italic mt-1"></p>
+            </div>
+
+            <div class="mb-4">
+                <label for="paymentType" class="block text-gray-700 text-sm font-bold mb-2">Payment Type:</label>
+                <select id="paymentType" name="paymentType"
+                    class="form-input border rounded py-2 px-3 focus:outline-none focus:ring focus:ring-green-500 focus:border-green-500">
+                    <option value="">Select Payment Type</option>
+                    <option value="credit">Credit Card</option>
+                    <option value="debit">Debit Card</option>
+                    <option value="phonepay">PhonePay</option>
+                    <option value="googlepay">GooglePay</option>
+                </select>
+                <p id="paymentTypeError" class="text-red-500 text-xs italic mt-1"></p>
+            </div>
+
+            <button type="submit"
+                class="w-full bg-green-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                Place Order
+            </button>
+
+            <p id="formError" class="text-red-500 text-xs italic mt-2"></p>
+            <p id="formSuccess" class="text-green-500 text-xs italic mt-2"></p>
+        </form>
+    </div>
+
+    <script>
+        window.addEventListener('DOMContentLoaded', (event) => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const amount = urlParams.get('amount');
+            document.getElementById('amount').value = amount;
+        });
+
+        document.getElementById('paymentForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+        });
+
+
+        document.getElementById('paymentForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const formFields = {
+                name: document.getElementById('name'),
+                phoneNumber: document.getElementById('phoneNumber'),
+                homeAddress: document.getElementById('homeAddress'),
+                pincode: document.getElementById('pincode'),
+                paymentType: document.getElementById('paymentType')
+            };
+
+            const errorMessages = {
+                name: document.getElementById('nameError'),
+                phoneNumber: document.getElementById('phoneNumberError'),
+                homeAddress: document.getElementById('homeAddressError'),
+                pincode: document.getElementById('pincodeError'),
+                paymentType: document.getElementById('paymentTypeError')
+            };
+
+            let isFormValid = true;
+
+            for (const field in formFields) {
+                const value = formFields[field].value.trim();
+                if (formFields[field].required && value.length === 0) {
+                    const errorMessage = `Please fill in the ${field}.`;
+                    errorMessages[field].innerText = errorMessage;
+                    isFormValid = false;
+                } else {
+                    errorMessages[field].innerText = '';
+                }
+
+                if (field === 'phoneNumber' && value.length < 10) {
+                    const errorMessage = 'Please enter a valid phone number.';
+                    errorMessages[field].innerText = errorMessage;
+                    isFormValid = false;
+                }
+
+                if (field === 'homeAddress' && value.length < 10) {
+                    const errorMessage = 'Please enter a valid home address.';
+                    errorMessages[field].innerText = errorMessage;
+                    isFormValid = false;
+                }
+
+                if (field === 'pincode' && value.length < 6) {
+                    const errorMessage = 'Please enter a valid pincode.';
+                    errorMessages[field].innerText = errorMessage;
+                    isFormValid = false;
+                }
+
+                if (field === 'paymentType' && value === '') {
+                    const errorMessage = 'Please select a payment type.';
+                    errorMessages[field].innerText = errorMessage;
+                    isFormValid = false;
+                }
+            }
+
+            if (isFormValid) {
+                const formSuccess = document.getElementById('formSuccess');
+                formSuccess.innerText = 'Order placed!';
+                formSuccess.style.color = 'green';
+                for (const field in formFields) {
+                    formFields[field].disabled = true;
+                }
+                setTimeout(() => {
+                    formSuccess.innerText = '';
+                }, 5000);
+            }
+        });
+    </script>
+</body>
+
+</html>

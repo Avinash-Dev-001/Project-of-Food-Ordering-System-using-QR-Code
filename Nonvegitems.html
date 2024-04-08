@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu Items</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    .back-button {
+        color: #fff;
+        background-color: #007bff;
+        border-color: #007bff;
+        border-top-color: rgb(0, 123, 255);
+        border-right-color: rgb(0, 123, 255);
+        border-bottom-color: rgb(0, 123, 255);
+        border-left-color: rgb(0, 123, 255);
+        padding: 5px 10px;
+        text-align: middle;
+        margin-bottom: 6px;
+        border-radius: 4px;
+        height: 80%;
+        transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    }
+
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card mt-5">
+          <div class="card-body">
+            <h1 class="card-title">NON-VEG STARTERS</h1>
+            <ul id="non-vegItemsList" class="list-group">
+              <li class="list-group-item">EGG MANCHURIAN - &#x20B9;130 <button class="addItem btn btn-success btn-sm float-right" data-name="EGG MANCHURIAN" data-price="130">Add</button></li>
+              <li class="list-group-item">EGG 65 - &#x20B9;130 <button class="addItem btn btn-success btn-sm float-right" data-name="EGG 65" data-price="130">Add</button></li>
+              <li class="list-group-item">CHILLI EGG - &#x20B9;130 <button class="addItem btn btn-success btn-sm float-right" data-name="CHILLI EGG" data-price="130">Add</button></li>
+              <li class="list-group-item">CHICKEN 65 - &#x20B9;160 <button class="addItem btn btn-success btn-sm float-right" data-name="CHICKEN 65" data-price="160">Add</button></li>
+              <li class="list-group-item">CHILLI CHICKEN - &#x20B9;160 <button class="addItem btn btn-success btn-sm float-right" data-name="CHILLI CHICKEN" data-price="160">Add</button></li>
+              <li class="list-group-item">CHICKEN MANCHURIAN - &#x20B9;160 <button class="addItem btn btn-success btn-sm float-right" data-name="CHICKEN MANCHURIAN" data-price="160">Add</button></li>
+              <li class="list-group-item">PEPPER CHICKEN - &#x20B9;160 <button class="addItem btn btn-success btn-sm float-right" data-name="PEPPER CHICKEN" data-price="160">Add</button></li>
+              <li class="list-group-item">CHICKEN MAJESTIC - &#x20B9;160 <button class="addItem btn btn-success btn-sm float-right" data-name="CHICKEN MAJESTIC" data-price="160">Add</button></li>
+              <li class="list-group-item">CHICKEN LOLLYPOP - &#x20B9;160 <button class="addItem btn btn-success btn-sm float-right" data-name="CHICKEN LOLLYPOP" data-price="160">Add</button></li>
+              <li class="list-group-item">CHICKEN DRUMSTICKS - &#x20B9;160 <button class="addItem btn btn-success btn-sm float-right" data-name="CHICKEN DRUMSTICKS" data-price="160">Add</button></li>
+              <li class="list-group-item">SZECHWAN CHICKEN - &#x20B9;160 <button class="addItem btn btn-success btn-sm float-right" data-name="SZECHWAN CHICKEN" data-price="160">Add</button></li>
+              <li class="list-group-item">DRAGON CHICKEN - &#x20B9;160 <button class="addItem btn btn-success btn-sm float-right" data-name="DRAGON CHICKEN" data-price="160">Add</button></li>
+              <li class="list-group-item">POTATO CHICKEN - &#x20B9;160 <button class="addItem btn btn-success btn-sm float-right" data-name="POTATO CHICKEN" data-price="160">Add</button></li>
+              <li class="list-group-item">HONEY POTATO CHICKEN - &#x20B9;180 <button class="addItem btn btn-success btn-sm float-right" data-name="HONEY POTATO CHICKEN" data-price="180">Add</button></li>
+              <li class="list-group-item">CHICKEN WINGS- &#x20B9;160 <button class="addItem btn btn-success btn-sm float-right" data-name="CHICKEN WINGS" data-price="160">Add</button></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card mt-5">
+          <div class="card-body">
+            <h3>Total Cost: &#x20B9;<span id="totalCost">0</span></h3>
+            <button id="placeOrder" class="btn btn-primary">Place Order</button>
+            <button id="placeOrder2" class="back-button" onClick="goToShoppingCart()">< Back</button>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>
+    const nonVegItems = [
+    { name: "EGG MANCHURIAN", price: 130 },
+    { name: "EGG 65", price: 130 },
+    { name: "CHILLI EGG", price: 130 },
+    { name: "CHICKEN 65", price: 160 },
+    { name: "CHILLI CHICKEN", price: 160 },
+    { name: "CHICKEN MANCHURIAN", price: 160 },
+    { name: "PEPPER CHICKEN", price: 160 },
+    { name: "CHICKEN MAJESTIC", price: 160 },
+    { name: "CHICKEN LOLLYPOP", price: 160 },
+    { name: "CHICKEN DRUMSTICKS", price: 160 },
+    { name: "SZECHWAN CHICKEN", price: 160 },
+    { name: "DRAGON CHICKEN", price: 160 },
+    { name: "POTATO CHICKEN", price: 160 },
+    { name: "HONEY POTATO CHICKEN", price: 180 },
+    { name: "CHICKEN WINGS", price: 160 }
+];
+
+const nonvegItemsList = document.getElementById('non-vegItemsList');
+const totalCostDisplay = document.getElementById('totalCost');
+let totalCost = 0;
+
+function addItemToCart(item) {
+  const removeButton = document.createElement('button');
+  removeButton.textContent = 'Remove';
+  removeButton.className = 'removeItem btn btn-danger btn-sm float-right';
+  removeButton.addEventListener('click', () => {
+    totalCost -= item.price;
+    totalCostDisplay.textContent = totalCost.toFixed(2);
+    removeButton.parentNode.remove();
+  });
+
+  const listItem = document.createElement('li');
+  listItem.textContent = `${item.name} - $${item.price}`;
+  listItem.className = 'list-group-item';
+  listItem.appendChild(removeButton);
+  nonvegItemsList.appendChild(listItem);
+}
+
+const addToCartButtons = document.querySelectorAll('.addItem');
+addToCartButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    const itemName = button.getAttribute('data-name');
+    const itemPrice = parseFloat(button.getAttribute('data-price'));
+    totalCost += itemPrice;
+    totalCostDisplay.textContent = totalCost.toFixed(2);
+    addItemToCart({ name: itemName, price: itemPrice });
+    
+
+    const addedItems = JSON.parse(localStorage.getItem('items')) || [];
+    addedItems.push({ name: itemName, price: itemPrice });
+    localStorage.setItem('items', JSON.stringify(addedItems));
+  });
+});
+
+function goToShoppingCart() {
+  window.location.href = "template.html";
+}
+
+document.getElementById('placeOrder').addEventListener('click', () => {
+  if (totalCost === 0) {
+    alert('Select items');
+  } else {
+    alert('Order Placed');
+  }
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu Items</title>
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    .back-button {
+        color: #fff;
+        background-color: #007bff;
+        border-color: #007bff;
+        border-top-color: rgb(0, 123, 255);
+        border-right-color: rgb(0, 123, 255);
+        border-bottom-color: rgb(0, 123, 255);
+        border-left-color: rgb(0, 123, 255);
+        padding: 5px 10px;
+        text-align: middle;
+        margin-bottom: 6px;
+        border-radius: 4px;
+        height: 80%;
+        transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    }
+
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card mt-5">
+          <div class="card-body">
+            <h1 class="card-title">MILKSHAKES</h1>
+            <ul id="milkshakeItemsList" class="list-group">
+              <li class="list-group-item">CHOCOLATE MILKSHAKE - &#x20B9;50 <button class="addItem btn btn-success btn-sm float-right" data-name="CHOCOLATE MILKSHAKE" data-price="50">Add</button></li>
+              <li class="list-group-item">VANILLA MILKSHAKE - &#x20B9;50 <button class="addItem btn btn-success btn-sm float-right" data-name="VANILLA MILKSHAKE" data-price="50">Add</button></li>
+              <li class="list-group-item">STRAWBERRY MILKSHAKE - &#x20B9;50 <button class="addItem btn btn-success btn-sm float-right" data-name="STRAWBERRY MILKSHAKE" data-price="50">Add</button></li>
+              <li class="list-group-item">BANANA MILKSHAKE - &#x20B9;50 <button class="addItem btn btn-success btn-sm float-right" data-name="BANANA MILKSHAKE" data-price="50">Add</button></li>
+              <li class="list-group-item">SNICKERS MILKSHAKE- &#x20B9;70 <button class="addItem btn btn-success btn-sm float-right" data-name="SNICKERS MILKSHAKE" data-price="70">Add</button></li>
+              <li class="list-group-item">COFFEE MILKSHAKE- &#x20B9;70 <button class="addItem btn btn-success btn-sm float-right" data-name="COFFEE MILKSHAKE" data-price="70">Add</button></li>
+             
+            </ul>
+            <h1 class="card-title">ICE CREAMS</h1>
+            <ul id="IcecreamList" class="list-group">
+              <li class="list-group-item">VANILLA ICECREAM - &#x20B9;60 <button class="addItem btn btn-success btn-sm float-right" data-name="VANILLA ICECREAM" data-price="60">Add</button></li>
+              <li class="list-group-item">STRAWBERRY ICECREAM - &#x20B9;70 <button class="addItem btn btn-success btn-sm float-right" data-name="STRAWBERRY ICECREAM " data-price="70">Add</button></li>
+              <li class="list-group-item">BUTTERSCOTCH ICECREAM - &#x20B9;90 <button class="addItem btn btn-success btn-sm float-right" data-name="BUTTERSCOTCH ICECREAM " data-price="90">Add</button></li>
+              <li class="list-group-item">CHOCOLATE ICECREAM- &#x20B9;90 <button class="addItem btn btn-success btn-sm float-right" data-name="CHOCOLATE ICECREAM" data-price="90">Add</button></li>
+              <li class="list-group-item">PISTA ICECREAM- &#x20B9;100 <button class="addItem btn btn-success btn-sm float-right" data-name="PISTA ICECREAM" data-price="100">Add</button></li>
+              <li class="list-group-item">DARKCHOCOLATE WITH CHOCOCHIPS - &#x20B9;110 <button class="addItem btn btn-success btn-sm float-right" data-name="DARKCHOCOLATE WITH CHOCOCHIPS" data-price="110">Add</button></li>
+              <li class="list-group-item">COCONUT ALMOND BLISS - &#x20B9;120 <button class="addItem btn btn-success btn-sm float-right" data-name="COCONUT ALMOND BLISS" data-price="120">Add</button></li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card mt-5">
+          <div class="card-body">
+            <h3>Total Cost: &#x20B9;<span id="totalCost">0</span></h3>
+            <button id="placeOrder" class="btn btn-primary">Place Order</button>
+            <<button id="placeOrder2" class="back-button" onClick="goToShoppingCart()">< Back</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>
+    const milkshakeItems = [
+    { name: "CHOCOLATE MILKSHAKE", price: 50 },
+    { name: "VANILLA MILKSHAKE", price: 50 },
+    { name: "STRAWBERRY MILKSHAKE", price: 50 },
+    { name: "BANANA MILKSHAKE", price: 50 },
+    { name: "SNICKERS MILKSHAKE", price: 70 },
+    { name: "COFFEE MILKSHAKE", price: 70 }
+];
+
+const icecreamItems = [
+    { name: "VANILLA ICECREAM", price: 60 },
+    { name: "STRAWBERRY ICECREAM", price: 70 },
+    { name: "BUTTERSCOTCH ICECREAM", price: 90 },
+    { name: "CHOCOLATE ICECREAM", price: 90 },
+    { name: "PISTA ICECREAM", price: 100 },
+    { name: "DARKCHOCOLATE WITH CHOCOCHIPS", price: 110 },
+    { name: "COCONUT ALMOND BLISS", price: 120 }
+];
+
+
+const milkshakeItemsList = document.getElementById('milkshakeItemsList');
+const icecreamItemsList = document.getElementById('IcecreamList');
+const totalCostDisplay = document.getElementById('totalCost');
+let totalCost = 0;
+
+function addItemToCart(item) {
+  const removeButton = document.createElement('button');
+  removeButton.textContent = 'Remove';
+  removeButton.className = 'removeItem btn btn-danger btn-sm float-right';
+  removeButton.addEventListener('click', () => {
+    totalCost -= item.price;
+    totalCostDisplay.textContent = totalCost.toFixed(2);
+    removeButton.parentNode.remove();
+  });
+
+  const listItem = document.createElement('li');
+  listItem.textContent = `${item.name} - ₹${item.price}`;
+  listItem.className = 'list-group-item';
+  listItem.appendChild(removeButton);
+  if (item.name.includes('MILKSHAKE')) {
+    milkshakeItemsList.appendChild(listItem);
+  } else {
+    icecreamItemsList.appendChild(listItem);
+  }
+}
+
+const addToCartButtons = document.querySelectorAll('.addItem');
+addToCartButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    const itemName = button.getAttribute('data-name');
+    const itemPrice = parseFloat(button.getAttribute('data-price'));
+    totalCost += itemPrice;
+    totalCostDisplay.textContent = totalCost.toFixed(2);
+    addItemToCart({ name: itemName, price: itemPrice });
+    
+    const addedItems = JSON.parse(localStorage.getItem('items')) || [];
+    addedItems.push({ name: itemName, price: itemPrice });
+    localStorage.setItem('items', JSON.stringify(addedItems));
+  });
+});
+
+function goToShoppingCart() {
+  window.location.href = "template.html";
+}
+
+document.getElementById('placeOrder').addEventListener('click', () => {
+  if (totalCost === 0) {
+    alert('Select items');
+  } else {
+    alert('Order Placed');
+  }
+});
+
+  </script>
+</body>
+</html>
